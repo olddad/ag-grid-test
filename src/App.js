@@ -26,6 +26,13 @@ function App() {
   const gridRef = useRef();
 
   const [carData, setCars] = useState([]);
+
+  const cellClassRules = {
+    "cell-pass": params => 0===(params.value % 10),
+    "cell-fail": params => 0===(params.value % 5)
+  };
+
+  
   const cars = [
     {id: 0, make:'Ford', model:'Focus', price:40000},
     {id: 1, make:'Totyta', model:'Celica', price:45000},
@@ -36,7 +43,7 @@ function App() {
  const [columnDefs, setColumnDef] = useState([
   {field:'make' , sortable: true, cellRenderer: SimpleComp},
   {field:'model', cellRenderer: p => <><b>{p.value}</b></>},
-  {field: 'price', cellRenderer: 'agAnimateShowChangeCellRenderer'}
+  {field: 'price', cellRenderer: 'agAnimateShowChangeCellRenderer', cellClassRules: cellClassRules}
  ]);
 
  const defaultColDef = useMemo( () =>({

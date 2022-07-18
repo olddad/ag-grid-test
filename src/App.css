@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.cell-fail {
+  text-align: center;
+  font-weight: bold;
+  background-color: #bf4e4e;
+  color: #0000ee;
+}
+
+.cell-pass {
+  text-align: center;
+  font-weight: bold;
+  background-color: #4caf50;
+  color: #000000;
+}
