@@ -43,7 +43,11 @@ function App() {
  const [columnDefs, setColumnDef] = useState([
   {field:'make' , sortable: true, cellRenderer: SimpleComp},
   {field:'model', cellRenderer: p => <><b>{p.value}</b></>},
-  {field: 'price', cellRenderer: 'agAnimateShowChangeCellRenderer', cellClassRules: cellClassRules}
+  {field: 'price', 
+    cellRenderer: 'agAnimateShowChangeCellRenderer', 
+    // cellRenderer: 'agAnimateSlideCellRenderer',
+    cellClassRules: cellClassRules
+  }
  ]);
 
  const defaultColDef = useMemo( () =>({

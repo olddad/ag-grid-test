@@ -50,3 +50,9 @@
   background-color: #4caf50;
   color: #000000;
 }
+
+.ag-theme-alpine {
+  
+  --ag-value-change-delta-down-color: rgb(0, 200, 160);
+  --ag-value-change-delta-up-color: rgb(255, 0, 80);
+}
