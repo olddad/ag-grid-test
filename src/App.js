@@ -15,7 +15,8 @@ const SimpleComp = p => {
   const onAt = useCallback(() => window.alert('At ' + p.value));
   // console.log(p);
   if(typeof p.value != 'undefined'){
-    return <><button width='80' onClick={onAt}>{p.value}</button></>;
+    //return <><button width='80' onClick={onAt}>{p.value}</button></>;
+    return <><b style={{color:"red"}}>{p.value}</b></>
   }
 }
 
@@ -51,10 +52,26 @@ function App() {
     //setRowData(data);
     setCars(data);
     //console.log(data);
+
+    setTimeout(() => {
+
+      var rows = [rowData];
+      for(var i=0;i<10;i++){
+        console.log(data[i]);
+        seq++;
+        console.log("seq: ", seq);
+        var car = {...data[i], id:seq+i};
+        console.log('inserting car: ', car);
+        
+        rows ={...car, rows};
+      }
+      gridRef.current.api.applyTransaction({
+        insert: rows
+      });
+      
+    }, 1000);
   }); 
-   setInterval(()=>{
-  onTxUpdate();
-}, 1000);
+   setInterval(()=>{onTxUpdate();}, 1000);
  },[]);
 
  const TestPrice = useCallback(() => {
@@ -110,7 +127,7 @@ function App() {
     <br></br>
     <button onClick={onTxUpdate}>Test Tx Price Updte</button>
 
-  <div className='ag-theme-alpine' style={{height:500}}>
+  <div className='ag-theme-alpine' style={{height:800}}>
     <AgGridReact 
     ref = {gridRef}
     rowData = {rowData}
